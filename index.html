@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Besbi – Mitra Akademik & Digital Terpercaya</title>
+<title>Besbi | Jasa Rapihkan Format Skripsi, Olah Data & CV ATS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="icon" type="image/png" href="https://i.ibb.co.com/pj7LPNCn/Untitled-design-22.png"> 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,6 +26,10 @@
   --rose-lt:  #fdf0ef;
   --indigo:   #3d5a99;
   --indigo-lt:#eef2fb;
+  --urgency-h: 40px; /* Tambahkan baris ini */
+  --cream:    #fdf8f2;
+  --warm-bg:  #fff9f2;
+  --white:    #ffffff;
   --radius:   16px;
   --radius-lg:24px;
   --shadow:   0 4px 24px rgba(26,18,8,.08);
@@ -53,8 +57,19 @@ h2.section-title em{font-style:italic;color:var(--teal);}
 .d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
 .d4{transition-delay:.32s;}.d5{transition-delay:.40s;}
 
+
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,248,242,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+nav {
+  position: fixed;
+  top: var(--urgency-h);
+  left: 0;
+  right: 0;
+  z-index: 900;
+
+  background: rgba(253,248,242,.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;max-width:1200px;margin:0 auto;}
 .nav-logo{display:inline-flex;align-items:center;gap:.5rem;font-family:'Playfair Display',serif;font-weight:900;font-size:1.55rem;color:var(--ink);text-decoration:none;}
 .nav-logo span{color:var(--teal);}
@@ -83,23 +98,183 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,248,242,
   color: #ffffff !important;
 }
 
+.urgency-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--urgency-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(90deg, var(--teal), var(--teal-mid));
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  z-index: 1000;
+  overflow: hidden;
+
+  box-shadow: 0 2px 12px rgba(29,120,116,.18);
+}
+
+/* subtle animated gradient shift */
+.urgency-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.25), transparent);
+  transform: translateX(-100%);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  60% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+#urgency-text {
+  position: relative;
+  display: inline-block;
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.urgency-bar:hover {
+  letter-spacing: 0.4px;
+  transition: letter-spacing .3s ease;
+}
+
 /* POPUP MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(26,18,8,.55);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;}
-.modal-overlay.open{opacity:1;visibility:visible;}
-.modal-box{background:#fff;border-radius:var(--radius-lg);padding:2.2rem;max-width:480px;width:100%;position:relative;transform:translateY(20px) scale(.97);transition:transform .3s ease;box-shadow:var(--shadow-lg);}
-.modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
-.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.2rem;transition:background .2s,color .2s;}
-.modal-close:hover{background:var(--cream);color:var(--ink);}
-.modal-icon{font-size:2.2rem;margin-bottom:.8rem;}
-.modal-box h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:.6rem;color:var(--ink);}
-.modal-box p{font-size:.9rem;color:var(--ink-soft);line-height:1.7;margin-bottom:1.2rem;}
-.modal-box ul{list-style:none;margin-bottom:1.4rem;}
-.modal-box ul li{font-size:.85rem;color:var(--ink-soft);padding:.3rem 0;display:flex;align-items:baseline;gap:.5rem;}
-.modal-box ul li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
-.modal-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff3cd;border:1.5px solid #f5c842;border-radius:8px;padding:.45rem .9rem;font-size:.78rem;font-weight:700;color:#7a5700;margin-bottom:1.4rem;}
-.modal-wa{display:flex;align-items:center;justify-content:center;gap:.55rem;background:var(--teal);color:#fff;font-weight:700;font-size:.95rem;padding:.85rem 1.6rem;border-radius:50px;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 4px 18px rgba(29,120,116,.28);}
-.modal-wa:hover{background:var(--teal-mid);transform:translateY(-2px);}
-.modal-wa svg{width:18px;height:18px;}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 18, 8, .55);
+  backdrop-filter: blur(4px);
+  z-index: 1500; /* Ditingkatkan agar menutupi navbar & urgency bar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2.2rem;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  max-height: 85vh; /* Membatasi tinggi maksimal popup */
+  overflow-y: auto; /* Memunculkan scroll otomatis jika konten melebihi layar */
+  transform: translateY(20px) scale(.97);
+  transition: transform .3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-overlay.open .modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--cream); /* Background agar tombol X lebih terlihat */
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink); /* Warna X digelapkan */
+  font-size: 1.2rem;
+  transition: background .2s, color .2s;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--border);
+  color: var(--ink);
+}
+
+.modal-icon { font-size: 2.2rem; margin-bottom: .8rem; }
+.modal-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: .6rem; color: var(--ink); }
+.modal-box p { font-size: .9rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.2rem; }
+/* --- TABEL PERBANDINGAN BUKAN JOKI --- */
+.joki-compare-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.joki-compare-list li {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr; /* Membagi layar jadi 2 kolom rapi */
+  gap: 1rem;
+  align-items: start;
+  background: var(--warm-bg); /* Memberi kotak samar agar enak dibaca */
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.jcl-do { color: var(--teal); }
+.jcl-do strong { color: var(--ink); }
+
+.jcl-dont {
+  color: var(--rose);
+  display: flex;
+  gap: 0.4rem;
+}
+.jcl-dont::before {
+  content: '❌'; /* Ikon silang biar kontras dengan centang */
+  font-size: 0.75rem;
+  margin-top: 0.1rem;
+}
+
+/* Biar tetap aman di layar HP yang layarnya super kecil (misal iPhone lama) */
+@media (max-width: 480px) {
+  .joki-compare-list li {
+    grid-template-columns: 1fr; /* Otomatis jadi atas-bawah kalau layar terlalu sempit */
+    gap: 0.5rem;
+  }
+  .jcl-dont { padding-left: 1.2rem; }
+}
+
+.modal-badge { display: inline-flex; align-items: center; gap: .5rem; background: #fff3cd; border: 1.5px solid #f5c842; border-radius: 8px; padding: .45rem .9rem; font-size: .78rem; font-weight: 700; color: #7a5700; margin-bottom: 1.4rem; }
+
+.modal-wa { display: flex; align-items: center; justify-content: center; gap: .55rem; background: var(--teal); color: #fff; font-weight: 700; font-size: .95rem; padding: .85rem 1.6rem; border-radius: 50px; text-decoration: none; transition: background .2s, transform .2s; box-shadow: 0 4px 18px rgba(29,120,116,.28); }
+.modal-wa:hover { background: var(--teal-mid); transform: translateY(-2px); }
+.modal-wa svg { width: 18px; height: 18px; }
 
 /* PORTFOLIO SLIDER */
 .portfolio{padding:6rem 5%;background:var(--cream);}
@@ -167,8 +342,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,248,242,
 @keyframes drawline{to{transform:scaleX(1);}}
 .hero-rhyme{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--teal);margin-bottom:1.2rem;line-height:1.7;animation:fadeUp .6s .1s ease both;padding-left:1rem;border-left:3px solid var(--teal);}
 .hero-sub{color:var(--ink-soft);font-size:1rem;line-height:1.75;margin-bottom:1.6rem;max-width:480px;animation:fadeUp .6s .2s ease both;}
-.not-joki-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff3cd;border:1.5px solid #f5c842;border-radius:8px;padding:.55rem 1rem;font-size:.82rem;font-weight:700;color:#7a5700;margin-bottom:1.6rem;animation:fadeUp .6s .25s ease both;}
-.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .6s .3s ease both;}
+.not-joki-badge {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.8rem;
+  background: #fff3cd;
+  border: 1.5px solid #f5c842;
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.85rem;
+  color: #7a5700;
+  margin-bottom: 1.6rem;
+  cursor: pointer;
+  line-height: 1.5;
+  /* Animasi bawaan Hero Section */
+  animation: fadeUp 0.6s 0.25s ease both; 
+  /* Memastikan posisinya relatif terhadap jalurnya, BUKAN fixed/absolute */
+  position: relative; 
+}.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .6s .3s ease both;}
 .btn-primary{display:inline-flex;align-items:center;gap:.55rem;background:var(--teal);color:#fff;font-weight:700;font-size:.95rem;padding:.9rem 1.8rem;border-radius:50px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(29,120,116,.28);}
 .btn-primary:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(29,120,116,.38);}
 .btn-primary svg{width:18px;height:18px;}
@@ -288,25 +480,59 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 .footer-copy{font-size:.78rem;}
 
 /* FLOATING WA */
-.wa-fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:300;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,.5);text-decoration:none;animation:wapulse 2.5s ease-in-out 3s infinite;transition:transform .2s;}
+.wa-fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,.5);text-decoration:none;animation:wapulse 2.5s ease-in-out 3s infinite;transition:transform .2s;}
 .wa-fab:hover{transform:scale(1.1);}
 .wa-fab svg{width:26px;height:26px;fill:#fff;}
 @keyframes wapulse{0%,100%{box-shadow:0 6px 28px rgba(37,211,102,.5);}50%{box-shadow:0 6px 36px rgba(37,211,102,.75);}}
 
-/* MOBILE */
-@media(max-width:640px){
-  .nav-links{display:none;}
-  .nav-ham{display:block;}
-  .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:61px;left:0;right:0;background:var(--cream);padding:1.5rem 5%;border-bottom:1px solid var(--border);gap:1.2rem;z-index:199;}
-  .stat-inner{gap:1.2rem;}
-  .about-values{grid-template-columns:1fr;}
-  .clients-grid{justify-content:center;}
+/* --- MOBILE & TABLET RESPONSIVE --- */
+@media(max-width: 860px) {
+  /* 1. Urgency Bar */
+  :root {
+    --urgency-h: 58px; 
+  }
+  .urgency-bar {
+    padding: 0.4rem 1rem;
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  /* 2. Sembunyikan menu panjang, munculkan Hamburger */
+  .nav-links {
+    display: none !important; /* Paksa hilang di layar kecil */
+  }
+  .nav-ham {
+    display: block;
+  }
+
+  /* 3. Dropdown Menu saat diklik */
+  .nav-links.open {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid var(--border);
+    gap: 1.2rem;
+    z-index: 199;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* Tambahan shadow biar manis */
+  }
+
 }
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<div class="urgency-bar">
+  <p id="urgency-text">⚡ Akses terbatas hari ini — beberapa resource sudah tidak tersedia publik</p>
+</div>
 <nav>
   <div class="nav-inner">
   <a href="#" class="nav-logo" style="display:inline-flex; align-items:center; gap:.7rem; text-decoration:none; color:inherit;">
@@ -341,23 +567,25 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
   <div class="hero-blob hero-blob-2"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="tag tag-teal">✦ Mitra Akademik & Digital Terpercaya</div>
-      <h1>Biar Ambismu <span class="hl">Terbang Bebas</span>,<br>Teknisnya Biar <span class="hl">Besbi</span> yang Libas.</h1> <br>
+      <div class="tag tag-teal">✦ P3K Buat Urusan Skripsi & Kampusmu</div>
+      <h1>Pusing Format Skripsi & Data <span class="hl">Berantakan?</span>,<br>Biar<span class="hl"> Besbi</span> yang Bereskan.</h1> <br>
       <p class="hero-rhyme">
         "Skripsi rapi, data bersih, web langsung jadi" —<br>
       </p>
-      <p class="hero-sub">Micro-agency spesialis akademik dan digital untuk mahasiswa, peneliti, dan satuan pendidikan. Cepat, presisi, dan selalu transparan.</p>
-      <button class="not-joki-badge" id="jokiTrigger" onclick="document.getElementById('jokiModal').classList.add('open')" style="cursor:pointer;border:1.5px solid #f5c842;">
-        ⚠️ Kami <strong>&nbsp;BUKAN joki</strong> — klik untuk tahu bedanya ›
-      </button>
+      <p class="hero-sub">Kami bukan joki. Besbi adalah micro-agency spesialis Bantuan Teknis Akademik & Digital. Fokus pada risetmu, biar kami yang urus pusingnya format margin, sitasi Mendeley, hingga ekstraksi data PDF.</p>
+     <button class="not-joki-badge reveal" id="jokiTrigger" onclick="document.getElementById('jokiModal').classList.add('open')">
+  <span style="font-size: 1.2rem; line-height: 1;">⚠️</span>
+  <span>Kenapa Besbi Bukan Joki? <strong>(Dan Kenapa Dosenmu Akan Setuju)</strong> — klik untuk tahu bedanya ›</span>
+</button>
+      
       <div class="hero-actions">
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20Aku%20mau%20konsultasi%20tentang%20layanan%20Besbi%20%F0%9F%98%8A%20boleh%20cerita%20dulu%3F" class="btn-primary" class="nav-cta" 
    target="_blank" 
    rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat Minbi di WA
+          Curhatin Dokumenmu ke Minbi
         </a>
-        <a href="#layanan" class="btn-ghost">Lihat Layanan ↓</a>
+        <a href="#layanan" class="btn-ghost">Lihat Apa Saja yang Bisa Dibantu ↓</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -416,14 +644,14 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
     <div class="about-text reveal d2">
       <div class="tag tag-teal" style="margin-bottom:1.2rem">Tentang Besbi</div>
       <h2 class="section-title">Lahir dari <em>Gap</em> yang Nyata di Dunia Akademik</h2>
-      <p>Besbi hadir karena ada jurang yang sering terlewat: mahasiswa berbakat yang mandek bukan karena tidak cerdas, tetapi karena tersita urusan teknis yang tidak diajarkan di bangku kuliah — format Word, Mendeley error, data mentah berserakan, hingga presentasi yang tidak layak tampil.</p>
-      <p>Kami adalah micro-agency yang percaya bahwa <strong>keahlian akademik dan keterampilan teknis digital</strong> harus berjalan beriringan. Bukan menggantikan kerja kerasmu, melainkan memastikan hasil kerja kerasmu tampil sebaik yang layak ia terlihat.</p>
+      <p>Besbi lahir dari keresahan yang sering kita lihat di kampus: mahasiswa pintar yang stuck ngerjain skripsi bukan karena nggak ngerti materinya, tapi karena stres ngatur margin Word, sitasi daftar pustaka yang berantakan, atau pusing mindahin ratusan halaman PDF ke Excel.</p>
+      <p>Kita di sini bukan buat ngegantiin kerja kerasmu mikir <strong>(say no to joki!)</strong>. Besbi hadir murni sebagai asisten teknismu. Ibarat balapan, kamu yang nyetir mobilnya, Besbi yang jadi mekanik di pit stop biar mobilmu nggak mogok di tengah jalan.</p>
       <p style="color:var(--teal);font-weight:600;">Target kami: mahasiswa S1–S3, peneliti, dosen, dan satuan pendidikan yang ingin lebih fokus pada substansi, bukan teknisnya.</p>
       <div class="about-values">
         <div class="about-val"><span class="vi">🛡️</span> Berintegritas Tinggi</div>
         <div class="about-val"><span class="vi">⚡</span> Cepat & Tepat Waktu</div>
         <div class="about-val"><span class="vi">🔍</span> Transparan & Jujur</div>
-        <div class="about-val"><span class="vi">🤝</span> Orientasi Dampak</div>
+        <div class="about-val"><span class="vi">🤝</span> Revisi Sampai Tuntas</div>
       </div>
     </div>
   </div>
@@ -436,8 +664,8 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
   <div class="agitation-inner">
     <div class="agitation-header">
       <div class="tag tag-rose reveal" style="margin-bottom:.8rem">Kenali Masalahmu</div>
-      <h2 class="section-title reveal d1">Pernah Merasakan Ini? <em>Kamu Tidak Sendiri.</em></h2>
-      <p class="section-sub reveal d2">Ribuan mahasiswa kehilangan waktu berharga bukan karena tidak mampu, tapi karena terjebak masalah teknis yang berulang.</p>
+      <h2 class="section-title reveal d1">Jujur, Berapa Jam yang Udah Kamu Buang Buat Ngurus <em>hal-hal Ini?</em></h2>
+      <p class="section-sub reveal d2">Isi otak udah dikuras buat mikir materi, masa harus habis tenaga juga buat ngurusin error teknis yang bikin emosi?</p>
     </div>
     <div class="pain-grid">
       <div class="pain-card reveal d1"><div class="pain-emoji">📄</div><h3>Skripsi Rapi Cuma di Kepala</h3><p>Margin kacau, daftar isi otomatis error, Mendeley disconnect menjelang sidang. Sudah H-2, belum beres format?</p></div>
@@ -460,7 +688,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 <section class="services" id="layanan">
   <div class="services-inner">
     <div class="tag tag-teal reveal" style="margin-bottom:.8rem">Layanan Besbi</div>
-    <h2 class="section-title reveal d1">Satu Ekosistem Solusi, <em>Tanpa Drama</em></h2>
+    <h2 class="section-title reveal d1">Pilih Layanannya, <em>Tinggal Terima Beres</em></h2>
     <p class="section-sub reveal d2" style="margin-bottom:2.2rem">Delapan layanan yang dirancang khusus untuk memastikan ambisi akademik dan digitalmu berjalan tanpa hambatan teknis.</p>
 
     <div class="joki-banner reveal">
@@ -475,7 +703,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 
       <div class="svc-card pop reveal d1">
         <div class="svc-icon t">📚</div>
-        <h3>Academic Document Support</h3>
+        <h3>Perapian Format Skripsi/Tesis</h3>
         <p class="svc-sub">Perapian dokumen skripsi, tesis, atau laporan akademik agar siap sidang tanpa hambatan format.</p>
         <ul class="svc-feats">
           <li>Format margin, heading & layout Word</li>
@@ -487,7 +715,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 100K</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20tertarik%20dengan%20layanan%20*Academic%20Document%20Support*%20nih.%20Boleh%20aku%20cerita%20dulu%20kondisi%20dokumenku%3F" class="btn-svc" class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Rapihkan Skripsiku Sekarang →</a>
       </div>
 
       <div class="svc-card reveal d2">
@@ -504,7 +732,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 150K</span><span class="unit"> / sesi</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20tanya%20soal%20layanan%20*Bimbingan%20Skripsi%20%26%20Tesis*%20nih.%20Boleh%20cerita%20topik%20penelitianku%3F" class="btn-svc" class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Konsultasi Topikku Sekarang →</a>
       </div>
 
       <div class="svc-card reveal d3">
@@ -520,7 +748,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 50K</span><span class="unit"> / dokumen</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20butuh%20bantuan%20*Data%20Extraction%20%26%20Cleaning*%20nih.%20Boleh%20aku%20cerita%20format%20datanya%3F" class="btn-svc"class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Ubah PDF ke Excel Sekarang →</a>
       </div>
 
       <div class="svc-card reveal d1">
@@ -536,7 +764,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 120K</span><span class="unit"> / artikel</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20perlu%20bantuan%20*Format%20Artikel%20Jurnal*%20nih.%20Boleh%20cerita%20target%20jurnalnya%3F" class="btn-svc"class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Siap Submit Jurnal Sekarang →</a>
       </div>
 
       <div class="svc-card reveal d2">
@@ -552,7 +780,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 75K</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20bikin%20*CV%20ATS-Friendly*%20nih.%20Boleh%20cerita%20target%20karirku%3F" class="btn-svc"class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Bikin CV Biar Cepat Dipanggil HRD →</a>
       </div>
 
       <div class="svc-card reveal d3">
@@ -568,7 +796,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 150K</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20butuh%20*PPT%20untuk%20Sempro%2FSemhas%2FPitchdeck*%20nih.%20Boleh%20cerita%20kebutuhannya%3F" class="btn-svc"class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Bantu Bikin Slide Sidang →</a>
       </div>
 
       <div class="svc-card reveal d1">
@@ -584,24 +812,49 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
         <div class="svc-price"><span class="from">Mulai </span><span class="amt">Rp 750K</span></div>
         <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Institusiku%20butuh%20*EduTech%20Landing%20Page*%20nih.%20Boleh%20aku%20cerita%20kebutuhannya%3F" class="btn-svc"class="nav-cta" 
    target="_blank" 
-   rel="noopener noreferrer">Tanya Paket Ini →</a>
+   rel="noopener noreferrer">Bikin Web Sekolah dalam 3 Hari →</a>
       </div>
 
-      <div class="svc-card reveal d2" style="border-style:dashed;">
+     <div class="svc-card reveal d2">
+        <div class="svc-icon i">🧑‍🎓</div>
+        <h3>Academic Intelligence Pack</h3>
+        <p class="svc-sub">Kumpulan resource terkurasi untuk membantu Anda menavigasi beasiswa global dan publikasi ilmiah secara lebih sistematis dan efisien.</p>
+        <ul class="svc-feats">
+          <li>Panduan strategis beasiswa global </li>
+          <li>Database jurnal SINTA terkurasi (S1–S6)</li>
+          <li>Direktori jurnal Scopus (Q1–Q4)</li>
+        </ul>
+        <div class="svc-price">
+    <span class="from">Mulai </span>
+    <span class="amt">Rp 55K</span>
+  </div>
+
+  <a href="https://lynk.id/USERNAMEANDA" 
+     class="btn-svc" 
+     target="_blank" 
+     rel="noopener noreferrer">
+     Buka Aksesnya →
+  </a>
+      </div>
+
+  <div class="svc-card reveal d3" style="border-style:dashed;">
         <div class="svc-icon i">💬</div>
         <h3>Konsultasi & Paket Kustom</h3>
-        <p class="svc-sub">Kebutuhan spesifik yang tidak ada di atas? Mari diskusi. Kami rancang solusi yang tepat untukmu.</p>
+        <p class="svc-sub">Punya kebutuhan aneh-aneh yang nggak ada di daftar? Sini obrolin dulu aja sama Minbi, bebas nanya kok!"</p>
         <ul class="svc-feats">
           <li>Kombinasi beberapa layanan</li>
           <li>Kebutuhan batch / institusional</li>
           <li>Proyek jangka panjang</li>
         </ul>
         <div class="svc-price"><span class="from" style="font-size:.9rem;color:var(--teal);font-weight:600;">Harga Menyesuaikan</span></div>
-        <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20diskusi%20*kebutuhan%20spesifik*%20yang%20mungkin%20belum%20ada%20di%20daftar%20layanan.%20Boleh%20ngobrol%20dulu%3F" class="btn-svc"class="nav-cta" 
-   target="_blank" 
-   rel="noopener noreferrer">Ceritakan Kebutuhanmu →</a>
+        
+        <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20diskusi%20*kebutuhan%20spesifik*%20yang%20mungkin%20belum%20ada%20di%20daftar%20layanan.%20Boleh%20ngobrol%20dulu%3F" 
+           class="btn-svc" 
+           target="_blank" 
+           rel="noopener noreferrer">
+           Ceritakan Kebutuhanmu →
+        </a>
       </div>
-
     </div>
   </div>
 </section>
@@ -613,7 +866,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
   <div class="portfolio-inner">
     <div class="portfolio-header">
       <div class="tag tag-gold reveal" style="margin-bottom:.8rem">Portofolio & Testimoni</div>
-      <h2 class="section-title reveal d1">Bukan Sekadar Janji — <em>Ada Buktinya</em></h2>
+      <h2 class="section-title reveal d1">Udah Banyak yang Lulus Tenang — <em>Berkat Besbi 🎓</em></h2>
       <p class="section-sub reveal d2">Dari skripsi yang hampir gagal sidang hingga website PPDB yang go-live dalam 3 hari.</p>
     </div>
 
@@ -748,7 +1001,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">"Data PDF 200 halaman yang nggak karuan selesai di-extract dalam 2 hari. Rapi banget, tinggal langsung analisis. Worth it banget harganya."</p>
+          <p class="testi-text">"Nyelamatin nyawa banget buat yang gaptek. Data PDF 200 halaman langsung rapi di Excel, tinggal masukin SPSS. Worth every penny!"</p>
           <div class="testi-author">
             <div class="testi-av">F</div>
             <div><div class="testi-name">Fajar M.</div><div class="testi-role">Mahasiswa S2 Ilmu Ekonomi</div></div>
@@ -803,9 +1056,9 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 <!-- CLIENTS -->
 <section class="clients">
   <div class="clients-inner">
-    <div class="tag tag-indigo reveal" style="margin-bottom:.8rem">Klien & Segmen Kami</div>
+    <div class="tag tag-indigo reveal" style="margin-bottom:.8rem">Siapa Aja yang Biasanya Diselametin Besbi?</div>
     <h2 class="section-title reveal d1">Kami Hadir untuk <em>Siapa Saja</em> yang Berambisi</h2>
-    <p class="section-sub reveal d2">Dari mahasiswa tingkat awal hingga akademisi senior — selama ada kebutuhan teknis yang bisa kami bantu.</p>
+    <p class="section-sub reveal d2">Dari Dari maba yang bingung nyusun makalah, kating yang dikejar deadline sidang, sampai dosen yang butuh layout jurnal.</p>
     <div class="clients-grid reveal d3">
       <div class="client-tag">🎓 Mahasiswa S1 Tingkat Akhir</div>
       <div class="client-tag">🎓 Mahasiswa S2 / Pasca Sarjana</div>
@@ -823,7 +1076,7 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 <!-- FOOTER CTA -->
 <section class="footer-cta">
   <div class="tag reveal">Mulai Perjalananmu</div>
-  <h2 class="section-title reveal d1" style="color:#fff;">Skripsimu Rapi, Datamu Bersih,<br><em>Ambisimu Tak Imbangi.</em></h2>
+  <h2 class="section-title reveal d1" style="color:#fff;">Skripsi Rapi, Data Bersih, Waktunya <br><em>Tidur Nyenyak Malam Ini.</em></h2>
   <p class="reveal d2">Satu pesan WhatsApp sudah cukup untuk memulai. Minbi siap menemanimu dari titik mana pun kamu berada sekarang.</p>
   <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20konsultasi%20soal%20layanan%20Besbi.%20Boleh%20cerita%20dulu%20kebutuhanku%3F" class="btn-cta-white reveal d3"class="nav-cta" 
    target="_blank" 
@@ -856,34 +1109,54 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
 </footer>
 
 <!-- FLOATING WA -->
-<a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20tanya-tanya%20soal%20layanan%20Besbi%20%F0%9F%98%8A" class="wa-fab" title="Chat Minbi di WhatsApp"class="nav-cta" 
+<a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20%F0%9F%91%8B%20Aku%20mau%20tanya-tanya%20soal%20layanan%20Besbi%20%F0%9F%98%8A" class="wa-fab" title="Curhatin Dokumenmu ke Minbi"class="nav-cta" 
    target="_blank" 
    rel="noopener noreferrer">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <!-- POPUP MODAL: BUKAN JOKI -->
-<div class="modal-overlay" id="jokiModal" onclick="if(event.target===this)this.classList.remove('open')">
+ <div class="modal-overlay" id="jokiModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal-box">
     <button class="modal-close" onclick="document.getElementById('jokiModal').classList.remove('open')" aria-label="Tutup">✕</button>
     <div class="modal-icon">🚫</div>
     <h3>Besbi BUKAN Joki Akademik</h3>
     <div class="modal-badge">⚠️ Integritas Akademik adalah Harga Mati</div>
     <p>Kami memahami kamu butuh bantuan, tapi ada batas yang tidak akan kami langgar. Berikut perbedaan jelas antara layanan Besbi dan joki:</p>
-    <ul>
-      <li>Kami bantu <strong>format & layout dokumen</strong> — bukan menulis kontennya untukmu</li>
-      <li>Kami bantu <strong>sitasi & referensi teknis</strong> — bukan memalsukan sumber</li>
-      <li>Kami bantu <strong>ekstraksi & cleaning data</strong> — bukan manipulasi hasil riset</li>
-      <li>Kami bantu <strong>desain slide presentasi</strong> — bukan menyiapkan jawaban sidang</li>
-      <li>Kami bantu <strong>navigasi metodologi</strong> — bukan mengerjakan risetmu</li>
+    
+    <ul class="joki-compare-list">
+      <li>
+        <div class="jcl-do">✓ <strong>Format & layout dokumen</strong></div>
+        <div class="jcl-dont">bukan nulis konten untukmu</div>
+      </li>
+      <li>
+        <div class="jcl-do">✓ <strong>Sitasi & referensi teknis</strong></div>
+        <div class="jcl-dont">bukan memalsukan sumber</div>
+      </li>
+      <li>
+        <div class="jcl-do">✓ <strong>Ekstraksi & cleaning data</strong></div>
+        <div class="jcl-dont">bukan manipulasi hasil riset</div>
+      </li>
+      <li>
+        <div class="jcl-do">✓ <strong>Desain slide presentasi</strong></div>
+        <div class="jcl-dont">bukan bikinin naskah presentasi</div>
+      </li>
+      <li>
+        <div class="jcl-do">✓ <strong>Navigasi metodologi</strong></div>
+        <div class="jcl-dont">bukan ngerjain risetmu dari nol</div>
+      </li>
     </ul>
+    
     <p style="color:var(--teal);font-weight:600;font-size:.88rem;margin-bottom:1.4rem;">Intinya: ide, argumen, dan karya intelektualmu tetap sepenuhnya milikmu. Kami hanya pastikan ia tampil dengan baik. 💪</p>
-    <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20Aku%20sudah%20baca%20tentang%20Besbi%20dan%20ingin%20konsultasi%20layanan%20teknis%20yang%20kamu%20tawarkan%20%F0%9F%98%8A" class="modal-wa"class="nav-cta" 
-   target="_blank" 
-   rel="noopener noreferrer">
+    
+    <a href="https://wa.me/6285800205251?text=Halo%20Minbi!%20Aku%20sudah%20baca%20tentang%20Besbi%20dan%20ingin%20konsultasi%20layanan%20teknis%20yang%20kamu%20tawarkan%20%F0%9F%98%8A" class="modal-wa" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Paham! Aku Mau Konsultasi →
     </a>
+    
+    <button onclick="document.getElementById('jokiModal').classList.remove('open')" style="display:block; width:100%; text-align:center; background:none; border:none; color:var(--muted); margin-top:1.2rem; font-weight:600; cursor:pointer; font-size:0.85rem; text-decoration:underline;">
+      Tutup Jendela Ini ✕
+    </button>
   </div>
 </div>
 
@@ -899,6 +1172,25 @@ footer{background:var(--ink);padding:2.5rem 5%;color:rgba(255,255,255,.55);}
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(el => obs.observe(el));
+ 
+ 
+const messages = [
+  "⚡ Fast Track tersedia! Kirim dokumen malam ini, besok pagi format sudah rapi.",
+  "🎓 Digunakan oleh mahasiswa yang sedang mengejar beasiswa & publikasi",
+  "🔥 Pusing revisi? Minbi standby bantu rapihin skripsimu hari ini.",
+  "☕ Udah ngopi belum? Ingat, revisian coretan merah dosen masih nungguin.",
+  "🎯 Fokus aja mikirin materi presentasi, desain slide-nya biar Besbi yang urus.",
+  "💻 Mendeley error pas H-1 sidang? Tenang, Minbi standby bantu benerin.",
+  "📊 Sudah membantu banyak pengguna mempercepat proses akademik"
+];
+
+let index = 0;
+const textEl = document.getElementById("urgency-text");
+
+setInterval(() => {
+  index = (index + 1) % messages.length;
+  textEl.textContent = messages[index];
+}, 6000);
 
   // ── ESC closes modal ──
   document.addEventListener('keydown', e => {
